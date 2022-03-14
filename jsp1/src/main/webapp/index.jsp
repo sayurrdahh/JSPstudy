@@ -8,11 +8,5 @@
 </head>
 <body>
 
-	<%
-	
-int sum = 10/0;
-	
-	
-	%>
 </body>
 </html>

@@ -9,9 +9,9 @@ import java.util.Vector;
 //데이터를 연결하고 select, insert, update, delete작업을 실행해주는 클래
 public class MemberDAO {
 
-	String id = "root";
-	String pass = "darismas8+";
-	String url = "jdbc:mysql://localhost/study_db?serverTimezone=UTC";
+	String dbId = "root";
+	String dbPass = "darismas8+";
+	String dbUrl = "jdbc:mysql://localhost/study_db?serverTimezone=UTC";
 	
 	String sql = "";
 
@@ -23,17 +23,17 @@ public class MemberDAO {
 	public void getCon() {
 	
 		try {
+			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection(url, id, pass);
-			
+			conn = DriverManager.getConnection(dbUrl, dbId, dbPass);
+		
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
-	//데이터베이스에 한 사람의 회원 정보를 저장해주는 메소드
 	public void insertMember(MemberBean mbean) {
 		
 		try {
@@ -67,27 +67,76 @@ public class MemberDAO {
 		
 		Vector<MemberBean> v = new Vector<MemberBean>();
 		
-		//데이터베이스는 무조건 try catch
 		try {
 			
-			//커넥션 연결
 			getCon();
 			
-			//쿼리준비
 			sql = "select * from member";
 			
-			//쿼리를 실행시켜주는 객체 선언
 			pstmt = conn.prepareStatement(sql);
 			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberBean bean = new MemberBean(); //컬럼으로 나뉘어진 데이터를 빈 클래스에 저장
+				bean.setId(rs.getString(1));
+				bean.setPass1(rs.getString(2));
+				bean.setEmail(rs.getString(3));
+				bean.setTel(rs.getString(4));
+				bean.setHobby(rs.getString(5));
+				bean.setJob(rs.getString(6));
+				bean.setAge(rs.getString(7));
+				bean.setInfo(rs.getString(8));
+				
+				v.add(bean); //0번째부터 순서대로 데이터가 저장
+				
+			}
+			
+			conn.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return v;
 		
 	}
 	
+	public MemberBean oneSelectMember(String mbrId) {
+		
+		MemberBean bean = new MemberBean();
+				
+		try {
+			
+			getCon();
+			
+			sql = "select * from member where id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mbrId);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				bean.setId(rs.getString(1));
+				bean.setPass1(rs.getString(2));
+				bean.setEmail(rs.getString(3));
+				bean.setTel(rs.getString(4));
+				bean.setHobby(rs.getString(5));
+				bean.setJob(rs.getString(6));
+				bean.setAge(rs.getString(7));
+				bean.setInfo(rs.getString(8));
+			}
+			
+			conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return bean;
+		
+	}
 	
 	
 	

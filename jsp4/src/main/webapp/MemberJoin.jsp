@@ -44,10 +44,10 @@
 				<td width="150" align="center"> 당신의 직업은 </td>
 				<td> 
 					<select name="job">
-						<option value="가수">가수</option>
-						<option value="교사">교사</option>
-						<option value="사장">사장</option>
-						<option value="요리사">요리사</option>
+						<option value="singer">가수</option>
+						<option value="teacher">교사</option>
+						<option value="CEO">사장</option>
+						<option value="cook">요리사</option>
 					</select>
 				</td>
  			</tr>

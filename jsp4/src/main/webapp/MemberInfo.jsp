@@ -1,5 +1,4 @@
 <%@page import="model.MemberBean"%>
-<%@page import="java.util.Vector"%>
 <%@page import="model.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,38 +9,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <%
 
-MemberDAO mdao = new MemberDAO();
-//회원들의 정보가 얼마나 저장되어 있는지 모르기에 가변길이인vector를 사용하는 편이 좋다
+	MemberDAO mdao = new MemberDAO();
 
-Vector<MemberBean> vac = mdao.allSelectMember();
-
+	String mbrId = request.getParameter("mbrId");
+	MemberBean bean = mdao.oneSelectMember(mbrId);
+	
 %>
 
-<h2>모든 회원 보기</h2>
-	
-	<table width="800" border="1">
+		
+	<table width="1400" border="1">
 		<tr height="50">
 			<td align="center" width="150">아이디</td>
 			<td align="center" width="250">이메일</td>
 			<td align="center" width="200">전화번호</td>
 			<td align="center" width="200">취미</td>
+			<td align="center" width="200">직업</td>
+			<td align="center" width="100">나이</td>
+			<td align="center" width="300">정보</td>
 		</tr>
-		<%
-			for(int i=0;i<vac.size();i++){
-				MemberBean bean = vac.get(i);		
-		%>
 		<tr height="50">
-			<td align="center" width="150"><a href="MemberInfo.jsp?mbrId=<%=bean.getId()%>"><%=bean.getId() %></a></td>
+			<td align="center" width="150"><%=bean.getId() %></a></td>
 			<td align="center" width="250"><%=bean.getEmail() %></td>
 			<td align="center" width="200"><%=bean.getTel() %></td>
 			<td align="center" width="200"><%=bean.getHobby() %></td>
+			<td align="center" width="200"><%=bean.getJob() %></td>
+			<td align="center" width="100"><%=bean.getAge() %></td>
+			<td align="center" width="300"><%=bean.getInfo() %></td>
 		</tr>
-		<%
-			}
-		%>
 	</table>
+	
+
 </body>
 </html>

@@ -40,19 +40,18 @@ public class MemberDAO {
 			
 			getCon();
 			
-			sql = "insert into member values(?,?,?,?,?,?,?,?)";
+			sql = "insert into member values(?,?,?,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, mbean.getId());
 			pstmt.setString(2, mbean.getPass1());
-			pstmt.setString(3, mbean.getEmail());
-			pstmt.setString(4, mbean.getTel());
-			pstmt.setString(5, mbean.getHobby());
-			pstmt.setString(6, mbean.getJob());
-			pstmt.setString(7, mbean.getAge());
-			pstmt.setString(8, mbean.getInfo());
-			
+			pstmt.setString(3, mbean.getAge());
+			pstmt.setString(4, mbean.getHobby());
+			pstmt.setString(5, mbean.getEmail());
+			pstmt.setString(6, mbean.getTel());
+			pstmt.setString(7, mbean.getJob());
+						
 			pstmt.executeUpdate(); //insert update delete시 사용
 			
 			conn.close(); //자원반납
@@ -81,13 +80,11 @@ public class MemberDAO {
 				MemberBean bean = new MemberBean(); //컬럼으로 나뉘어진 데이터를 빈 클래스에 저장
 				bean.setId(rs.getString(1));
 				bean.setPass1(rs.getString(2));
-				bean.setEmail(rs.getString(3));
-				bean.setTel(rs.getString(4));
-				bean.setHobby(rs.getString(5));
-				bean.setJob(rs.getString(6));
-				bean.setAge(rs.getString(7));
-				bean.setInfo(rs.getString(8));
-				
+				bean.setAge(rs.getString(3));
+				bean.setHobby(rs.getString(4));
+				bean.setEmail(rs.getString(5));
+				bean.setTel(rs.getString(6));
+				bean.setJob(rs.getString(7));
 				v.add(bean); //0번째부터 순서대로 데이터가 저장
 				
 			}
@@ -120,12 +117,12 @@ public class MemberDAO {
 			while(rs.next()) {
 				bean.setId(rs.getString(1));
 				bean.setPass1(rs.getString(2));
-				bean.setEmail(rs.getString(3));
-				bean.setTel(rs.getString(4));
-				bean.setHobby(rs.getString(5));
-				bean.setJob(rs.getString(6));
-				bean.setAge(rs.getString(7));
-				bean.setInfo(rs.getString(8));
+				bean.setAge(rs.getString(3));
+				bean.setHobby(rs.getString(4));
+				bean.setEmail(rs.getString(5));
+				bean.setTel(rs.getString(6));
+				bean.setJob(rs.getString(7));
+		
 			}
 			
 			conn.close();

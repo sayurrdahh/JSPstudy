@@ -8,17 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	request.setCharacterEncoding("euc-kr");
-
-	String hobby[] = request.getParameterValues("hobby");
-	
-	String texthobby="";
-	
-	for(int i=0; i<hobby.length; i++){
-		texthobby += hobby[i]+" ";
-	}
-%>
 
 <!-- useBean을 이용하여 한꺼번에 데이터를 받아옴 -->
 
@@ -28,8 +17,6 @@
 
 <%
 
-mbean.setHobby(texthobby);
-
 //데이터베이스 클래스 객체 생성
 MemberDAO mdao = new MemberDAO();
 
@@ -38,7 +25,7 @@ mdao.insertMember(mbean);
 %>
 <script type="text/javascript">
 	alert("회원정보 저장이 완료되었습니다.");
-	location.href= 'MemberList.jsp';
+	location.href= 'index.html';
 </script>
 
 

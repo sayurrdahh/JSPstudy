@@ -100,12 +100,12 @@
 
                   <div class="form-outline datepicker w-100">
                     <input
-                      type="password"
-                      name="pass2"
+                      type="text"
+                      name="hobby"
                       class="form-control form-control-lg"
                       id="pass2"
                     />
-                    <label for="pass2" class="form-label">password confirm</label>
+                    <label for="hobby" class="form-label">hobby</label>
                   </div>
 
                 </div>
@@ -146,9 +146,10 @@
               </div>
 
               <div class="mt-4 pt-2">
+                <input class="btn btn-primary btn-lg" type="reset" value="reset" />
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
               </div>
-
+	
             </form>
           </div>
         </div>

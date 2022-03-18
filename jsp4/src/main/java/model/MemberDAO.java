@@ -1,17 +1,21 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 //데이터를 연결하고 select, insert, update, delete작업을 실행해주는 클래
 public class MemberDAO {
 
-	String dbId = "root";
-	String dbPass = "darismas8+";
-	String dbUrl = "jdbc:mysql://localhost/study_db?serverTimezone=UTC";
+//	String dbId = "root";
+//	String dbPass = "darismas8+";
+//	String dbUrl = "jdbc:mysql://localhost/study_db?serverTimezone=UTC";
 	
 	String sql = "";
 
@@ -23,14 +27,32 @@ public class MemberDAO {
 	public void getCon() {
 	
 		try {
+			//외부에서 데이터를 읽어들이기
+			Context initctx = new InitialContext();
 			
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			//톰켓 서버에 정보를 담아놓은 곳으로 이동
+			Context envctx = (Context) initctx.lookup("java:comp/env");
 			
-			conn = DriverManager.getConnection(dbUrl, dbId, dbPass);
-		
-		}catch(Exception e) {
+			//데이터소스 객체를 선언
+			DataSource ds = (DataSource) envctx.lookup("jdbc/pool");
+			
+			//데이터 소스를 기준으로 커넥션을 연결해주시오
+			conn = ds.getConnection();
+			
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+//		try {
+//			
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			
+//			conn = DriverManager.getConnection(dbUrl, dbId, dbPass);
+//		
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
 		
 	}
 	

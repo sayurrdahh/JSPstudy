@@ -160,5 +160,43 @@ public class MemberDAO {
 		return pass;
 	}
 	
+	public void updateMember(MemberBean bean) {
+		
+		getCon();
+		
+		try {
+			
+			sql = "update member set email = ? , tel = ? where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getEmail());
+			pstmt.setString(2, bean.getTel());
+			pstmt.setString(3, bean.getId());
+			
+			pstmt.executeUpdate();
+			
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void deleteMember(String id) {
+		
+		getCon();
+		
+		try {
+			
+			sql = "delete from member where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			pstmt.executeUpdate();
+			
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	
 }

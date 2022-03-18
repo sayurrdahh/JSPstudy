@@ -1,18 +1,8 @@
-<%@page import="model.MemberBean"%>
-<%@page import="model.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<%
-
-	MemberDAO mdao = new MemberDAO();
-
-	String id = request.getParameter("id");
-	MemberBean bean = mdao.oneSelectMember(id);
-	
-%>
-    <head>
+   <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -39,33 +29,25 @@
             </div>
         </nav>
 <div style="padding:10%;">
-<h2>Member Info</h2>
-		
+<h2>Member Delete</h2>
+<form action="MemberDeleteProc.jsp">
 	<table border="1" width="100%">
 		<tr height="50">
 			<td align="center" >아이디</td>
-			<td align="center" >이메일</td>
-			<td align="center" >전화번호</td>
-			<td align="center" >취미</td>
-			<td align="center" >직업</td>
-			<td align="center" >나이</td>
+			<td align="center" >비밀번호</td>
 		</tr>
 		<tr height="50">
-			<td align="center" ><%=bean.getId() %></td>
-			<td align="center" ><%=bean.getEmail() %></td>
-			<td align="center" ><%=bean.getTel() %></td>
-			<td align="center" ><%=bean.getHobby() %></td>
-			<td align="center" ><%=bean.getJob() %></td>
-			<td align="center" ><%=bean.getAge() %></td>
+			<td align="center" ><%=request.getParameter("id") %></td>
+			<td align="center" ><input type="password" name="pass1"></td>
 		</tr>
 		<tr>
-			<td align="center" colspan="7">
-				<button onclick="location.href='MemberUpdateForm.jsp?id=<%=bean.getId()%>'">수정</button>
-				<button onclick="location.href='MemberDeleteForm.jsp?id=<%=bean.getId()%>'">삭제</button>
-				<button onclick="location.href='MemberList.jsp'">목록</button>
+			<td align="center" colspan="2">
+				<input type="hidden" value="<%=request.getParameter("id") %>" name="id">
+				<input type="submit" value="delete">
 			</td>
 		</tr>
 	</table>
+ </form>
 </div>
 
 </body>

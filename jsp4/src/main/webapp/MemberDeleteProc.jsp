@@ -17,10 +17,10 @@
 	
 	if(mbean.getPass1().equals(pass)){
 	
-		mdao.updateMember(mbean);
+		mdao.deleteMember(mbean.getId());
 %>
 	<script type="text/javascript">
-		alert("수정되었습니다.");
+		alert("삭제되었습니다.");
 	</script>
 <%
 		

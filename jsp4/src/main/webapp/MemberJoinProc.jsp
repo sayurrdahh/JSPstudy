@@ -28,18 +28,19 @@
 
 <%
 
-	mbean.setHobby(texthobby);
+mbean.setHobby(texthobby);
 
 //데이터베이스 클래스 객체 생성
 MemberDAO mdao = new MemberDAO();
 
 mdao.insertMember(mbean);
 
-
-
 %>
+<script type="text/javascript">
+	alert("회원정보 저장이 완료되었습니다.");
+	location.href= 'MemberList.jsp';
+</script>
 
-오라클 접속 완료.
 
 </body>
 </html>

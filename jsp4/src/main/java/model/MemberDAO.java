@@ -102,7 +102,7 @@ public class MemberDAO {
 		
 	}
 	
-	public MemberBean oneSelectMember(String mbrId) {
+	public MemberBean oneSelectMember(String id) {
 		
 		MemberBean bean = new MemberBean();
 				
@@ -113,7 +113,7 @@ public class MemberDAO {
 			sql = "select * from member where id = ?";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mbrId);
+			pstmt.setString(1, id);
 			
 			rs = pstmt.executeQuery();
 			
@@ -138,7 +138,30 @@ public class MemberDAO {
 		
 	}
 	
-	
+	public String getPass(String id) {
+		String pass = "";
+		
+		try {
+			getCon();
+			
+			sql = "select pass1 from member where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pass = rs.getString(1);
+			}
+		
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return pass;
+	}
 	
 	
 }

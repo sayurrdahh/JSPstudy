@@ -5,10 +5,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
 <body>
 
 <%
@@ -34,7 +30,7 @@ Vector<MemberBean> vac = mdao.allSelectMember();
 				MemberBean bean = vac.get(i);		
 		%>
 		<tr height="50">
-			<td align="center" width="150"><a href="MemberInfo.jsp?mbrId=<%=bean.getId()%>"><%=bean.getId() %></a></td>
+			<td align="center" width="150"><a href="MemberInfo.jsp?id=<%=bean.getId()%>"><%=bean.getId() %></a></td>
 			<td align="center" width="250"><%=bean.getEmail() %></td>
 			<td align="center" width="200"><%=bean.getTel() %></td>
 			<td align="center" width="200"><%=bean.getHobby() %></td>

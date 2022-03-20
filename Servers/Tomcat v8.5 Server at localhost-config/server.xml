@@ -152,13 +152,9 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="jsp3" path="/jsp3" reloadable="true" source="org.eclipse.jst.jee.server:jsp3"/>
-      <Context docBase="jsp4" path="/jsp4" reloadable="true" source="org.eclipse.jst.jee.server:jsp4">
-      	<Resource name="jdbc/pool" auth="Container" type="javax.sql.DataSource"  
-      		driverClassName="com.mysql.cj.jdbc.Driver" loginTimeout="10" maxWait="5000"
-      		username="root" password="darismas8+" url="jdbc:mysql://localhost/study_db" />
-      </Context>
-      </Host>
+      
+      
+      <Context docBase="CookieSession" path="/CookieSession" reloadable="true" source="org.eclipse.jst.jee.server:CookieSession"/></Host>
     </Engine>
   </Service>
 </Server>

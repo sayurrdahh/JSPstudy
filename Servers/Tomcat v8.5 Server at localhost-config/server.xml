@@ -154,7 +154,16 @@
 
       
       
-      <Context docBase="CookieSession" path="/CookieSession" reloadable="true" source="org.eclipse.jst.jee.server:CookieSession"/></Host>
+      
+      
+      <Context docBase="jsp4" path="/jsp4" reloadable="true" source="org.eclipse.jst.jee.server:jsp4">
+      	<Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" loginTimeout="10" maxWait="5000" name="jdbc/pool" password="darismas8+" type="javax.sql.DataSource" url="jdbc:mysql://localhost/study_db" username="root"/>
+      </Context>
+      <Context docBase="Board" path="/Board" reloadable="true" source="org.eclipse.jst.jee.server:Board">
+      	<Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" loginTimeout="10" maxWait="5000" name="jdbc/pool" password="darismas8+" type="javax.sql.DataSource" url="jdbc:mysql://localhost/study_db" username="root"/>      	
+      </Context>
+      
+      </Host>
     </Engine>
   </Service>
 </Server>

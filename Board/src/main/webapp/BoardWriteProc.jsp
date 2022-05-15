@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<!-- °Ô½Ã±Û ÀÛ¼ºÇÑ µ¥ÀÌÅÍ¸¦ ÇÑ¹ø¿¡ ÀĞ¾îµéÀÓ -->
+<!-- ê²Œì‹œê¸€ ì‘ì„±í•œ ë°ì´í„°ë¥¼ í•œë²ˆì— ì½ì–´ë“¤ì„ -->
 <jsp:useBean id="boardbean" class="model.BoardBean">
 	<jsp:setProperty name="boardbean" property="*" />
 </jsp:useBean>
@@ -14,7 +14,7 @@
 BoardDAO bdao = new BoardDAO();
 bdao.insertBoard(boardbean);
 
-//°Ô½Ã±Û ÀúÀå ÈÄ ÀüÃ¼ °Ô½Ã±Û º¸±â 
+//ê²Œì‹œê¸€ ì €ì¥ í›„ ì „ì²´ ê²Œì‹œê¸€ ë³´ê¸° 
 
 response.sendRedirect("BoardList.jsp");
 
